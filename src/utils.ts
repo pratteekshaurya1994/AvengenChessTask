@@ -11,7 +11,7 @@ const whitePawn = require( '../assets/chess_piece_2_white_pawn.png');
 const whiteQueen = require( '../assets/chess_piece_2_white_queen.png');
 const whiteRook = require( '../assets/chess_piece_2_white_rook.png');
 
-export const reset = {
+export const resetPosition = {
   AA: blackRook,
   AH: blackRook,
   AB: blackKnight,
@@ -46,7 +46,7 @@ export const reset = {
   HE: whiteQueen,
 };
 
-export const moves = [
+export const openingMoves = [
   {
     EE: whitePawn,
     GE: null,

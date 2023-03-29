@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import BoardNew from './src/BoardNew';
+import ChessBoard from './src/ChessBoard';
 
 const App = () => {
-  return <BoardNew />;
+  return <ChessBoard />;
 };
 
 export default App;

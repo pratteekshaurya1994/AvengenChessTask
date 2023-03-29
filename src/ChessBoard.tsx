@@ -7,25 +7,28 @@ import {
   StyleSheet,
 } from 'react-native';
 import Block from './Block';
-import {reset, moves, openingMoveName} from './Moves';
+import {resetPosition, openingMoves, openingMoveName} from './utils';
 
-const BoardNew = () => {
-  const [state, setState] = useState(reset);
-  const [moveName, setMoveName] = useState('');
+const ChessBoard = () => {
+  const [position, setPosition] = useState<any>(resetPosition);
+  const [moveName, setMoveName] = useState<String>('');
 
-  const resetBoard = () => setState(reset);
+  const resetBoard = () => {
+    setPosition(resetPosition);
+    setMoveName('');
+  };
   const [prevRandom, setPrevRandom] = useState(-1);
   const randomMove = () => {
     let random: number;
     do {
-      random = Math.floor(Math.random() * moves.length);
+      random = Math.floor(Math.random() * openingMoves.length);
     } while (random === prevRandom);
 
     setPrevRandom(random);
 
     const name = openingMoveName[random];
     setMoveName(name);
-    setState({...reset, ...moves[random]});
+    setPosition({...resetPosition, ...openingMoves[random]});
   };
 
   const isEven = (num: any) => num % 2 === 0;
@@ -46,7 +49,7 @@ const BoardNew = () => {
           <Block
             key={id}
             style={[styles.square, {backgroundColor, shadowOpacity: lighting}]}
-            source={state[id]}
+            source={position[id]}
           />
         );
       });
@@ -101,7 +104,7 @@ const BoardNew = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#141414',
+    backgroundColor: '#3e3e3e',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -136,7 +139,7 @@ const styles = StyleSheet.create({
     borderColor: '#ffa600',
   },
   label: {
-    width: Dimensions.get('window').width / 18,
+    width: Dimensions.get('window').width / 9,
     height: Dimensions.get('window').width / 9,
     justifyContent: 'center',
     alignItems: 'center',
@@ -174,4 +177,4 @@ const styles = StyleSheet.create({
     color: '#ffa600',
   },
 });
-export default BoardNew;
+export default ChessBoard;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Dimensions, ViewStyle, StyleProp} from 'react-native';
+import {View, Image, ViewStyle, StyleProp} from 'react-native';
 
 export interface BlockProps {
   style?: StyleProp<ViewStyle>;
@@ -14,10 +14,8 @@ const Block = (props: BlockProps) => {
       <Image
         source={source}
         style={{
-          width: 20,
-          height: 20,
-          // width: Dimensions.get('window').width / 9,
-          // height: Dimensions.get('window').width / 9,
+          width: 30,
+          height: 30,
         }}
         resizeMethod="auto"
         resizeMode="contain"
