@@ -17,4 +17,4 @@ Run with `yarn run android`
 
 ## Go to below link to download apk file
 
-https://drive.google.com/file/d/1LcMQkmO3Xzp5tbxY2HeV965TIafUgGMQ/view?usp=sharing
+https://drive.google.com/file/d/1fl7v2NR11F7Y9fvW7C7rXZ7-gEHzQTQ2/view?usp=sharing
