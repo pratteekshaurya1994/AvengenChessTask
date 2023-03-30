@@ -10,14 +10,20 @@ import Block from './Block';
 import {resetPosition, openingMoves, openingMoveName} from './utils';
 
 const ChessBoard = () => {
-  const [position, setPosition] = useState<any>(resetPosition);
-  const [moveName, setMoveName] = useState<String>('');
+  // Initialize state variables
+  const [position, setPosition] = useState<any>(resetPosition); // Position of the pieces on the board
+  const [moveName, setMoveName] = useState<String>(''); // Name of the opening move
 
+  // Reset the board to the starting position
   const resetBoard = () => {
     setPosition(resetPosition);
     setMoveName('');
   };
+
+  // Initialize state variable to keep track of the previous random move
   const [prevRandom, setPrevRandom] = useState(-1);
+
+  // Select a random opening move and set the position of the pieces on the board accordingly
   const randomMove = () => {
     let random: number;
     do {
@@ -31,34 +37,44 @@ const ChessBoard = () => {
     setPosition({...resetPosition, ...openingMoves[random]});
   };
 
+  // Determine if a given number is even
   const isEven = (num: any) => num % 2 === 0;
 
+  // Render the chess board
   const renderBoard = () => {
     const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     return columns.map((column, i) => {
-      const squareRows = Array.from({length: 8}).map((_, j) => {
+      // Render the blocks in each column
+      const blockRows = Array.from({length: 8}).map((_, j) => {
+        // Generate an ID for each block based on its position on the board
         const id =
           String.fromCharCode(j + 1 + 64) + String.fromCharCode(i + 1 + 64);
+
+        // Determine the background color and lighting for the block
         const backgroundColor =
           (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j))
             ? '#BEBEBE'
             : '#696969';
         const lighting =
           (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j)) ? 0.4 : 0.7;
+
+        // Render the block with the appropriate background color and piece image
         return (
           <Block
             key={id}
-            style={[styles.square, {backgroundColor, shadowOpacity: lighting}]}
+            style={[styles.block, {backgroundColor, shadowOpacity: lighting}]}
             source={position[id]}
           />
         );
       });
+
+      // Render the column with its squares and label
       return (
         <View key={column}>
           <View style={styles.label}>
             <Text style={styles.labelText}>{column}</Text>
           </View>
-          {squareRows}
+          {blockRows}
           <View style={styles.label}>
             <Text style={styles.labelText}>{column}</Text>
           </View>
@@ -67,6 +83,7 @@ const ChessBoard = () => {
     });
   };
 
+  // Render the row labels (numbers)
   const renderRowLabels = () =>
     Array.from({length: 8}).map((_, i) => {
       const label = 8 - i;
@@ -77,6 +94,7 @@ const ChessBoard = () => {
       );
     });
 
+  // Render the entire chess board with buttons and move name display
   return (
     <View style={styles.container}>
       <View style={styles.board}>
@@ -130,7 +148,7 @@ const styles = StyleSheet.create({
   rowLabels: {
     width: Dimensions.get('window').width / 18,
   },
-  square: {
+  block: {
     width: Dimensions.get('window').width / 9,
     height: Dimensions.get('window').width / 9,
     justifyContent: 'center',
