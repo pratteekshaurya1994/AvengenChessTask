@@ -1,4 +1,4 @@
-# <img src="./assets/ChessBoard.jpeg"  alt="Avengen Chess Board" width="300" height="300"> Avengen Chess Task
+# <img src="./assets/ChessBoard.jpeg"  alt="Avengen Chess Board" width="350" height="350"> Avengen Chess Task
 
 ## **Setting up the development environment**
 
