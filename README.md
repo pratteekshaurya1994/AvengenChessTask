@@ -14,3 +14,7 @@ Install dependencies with `yarn install`
 Start the dev server with `yarn start`
 
 Run with `yarn run android`
+
+## Go to below link to download apk file
+
+https://drive.google.com/file/d/1LcMQkmO3Xzp5tbxY2HeV965TIafUgGMQ/view?usp=sharing
